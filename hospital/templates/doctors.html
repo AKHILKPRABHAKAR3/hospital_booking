@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Doctors
+{% endblock %}
+
+{% block content%}
+<style>
+  .card img {
+max-height: 100px; /* Set the maximum height of the images */
+width: auto; /* Maintain the aspect ratio */
+margin: 0 auto; /* Center the images horizontally */
+}
+
+
+</style>
+<h1 class="text-center" style="color: black;">Our Doctors</h1>
+<hr>
+
+<div class="container text-center bg-light">
+    {% for i in data%}
+    <div class="card text-center mx-3 my-5" style="width: 18rem; background-color: rgb(217, 218, 221); display:inline-block">
+        <img src="{{i.doc_image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Dr. {{i.doc_name}}</h5>
+            <p class="card-text">{{i.doc_spec}}</p>
+            <h6>{{i.dep_name}} Department</h6>
+            <a href="{% url 'booking' %}"><button type="submit" class="btn btn-primary" >Book Now</button></a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+
+
